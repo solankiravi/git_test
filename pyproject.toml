@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "crud_app"
+version = "0.1.0"
+description = ""
+authors = ["Ravi Kumar <ravikumarsinghsolanki@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.108.0"
+uvicorn = { extras = ["standard"], version = "^0.25.0" }
+pytest = "^7.4.4"
+httpx = "^0.26.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+app = "crud_app.main:start"
