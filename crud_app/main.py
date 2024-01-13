@@ -1,21 +1,26 @@
-from typing import Union
-import uvicorn
 from fastapi import FastAPI
-
-from . import __version__
-
+from typing import Optional
+from .models import Item
 app = FastAPI()
 
+# @app.get("/")
+# def index():
+#     return {"blog_list": []}
 
-@app.get("/hello")
-def read_root():
-    return {"Version": __version__}
+@app.get("/about")
+def about():
+    return {"page": "about page"}
 
+@app.get("/blog/{id}")
+def blog_by_id(id: int):
+    return {"blog": id}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/")
+def get_first_n_blogs(limit: int = 20, published: bool = True, sort: Optional[str]=None):
+    if published:
+        return {"data": f"first {limit} published blogs from blog_list"}
+    return {"data": f"first {limit} unpublished blogs from blog_list"}
 
-def start():
-    """Launched with `poetry run start` at root level"""
-    uvicorn.run("crud_app.main:app", host="0.0.0.0", port=8000, reload=True)
+@app.post("/")
+def create_blog(item: Item):
+    return item

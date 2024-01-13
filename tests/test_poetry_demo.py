@@ -1,5 +1,5 @@
 from crud_app import __version__
-from crud_app.main import app
+from crud_app.run import app
 # from fastapi.testclient import TestClient
 from starlette.testclient import TestClient
 
