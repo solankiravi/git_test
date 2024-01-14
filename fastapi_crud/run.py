@@ -18,7 +18,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 def start():
     """Launched with `poetry run start` at root level"""
-    uvicorn.run("crud_app.run:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("fastapi_crud.run:app", host="0.0.0.0", port=8000, reload=True)
 
 
 if __name__ == "__main__":
