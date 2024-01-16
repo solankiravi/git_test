@@ -5,7 +5,6 @@ import os
 
 
 SQL_DB_URL = os.getenv("DB_CONN_STR")
-print(SQL_DB_URL)
 
 engine = create_engine(SQL_DB_URL)
 
